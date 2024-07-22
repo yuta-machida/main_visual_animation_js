@@ -1,5 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body{
   overflow: hidden;
+}
+header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.header-title{
+  width: 200px;
+  margin-top: 10px;
+}
+.header-title h1{
+  color: #41b732;
+  text-align: center;
+  line-height: 1.2;
 }
 .main-visual{
   position: relative;
@@ -9,80 +28,14 @@ body{
 }
 
 .leaf{
-  width: 200px;
-  height: 200px;
+  width: 96px;
   position: absolute;
   left: -10%;
   background-repeat: no-repeat;
-  animation: moveAlongPath 20s linear infinite;
+  animation: moveAlongPath 15s linear infinite;
 }
-#leaf2{
-  animation-delay: 2s;
-}
-#leaf3{
-  animation-delay: 4s;
-}
-#leaf4{
-  animation-delay: 6s;
-}
-#leaf5{
-  animation-delay: 8s;
-}
-#leaf6{
-  animation-delay: 10s;
-}
-#leaf7{
-  animation-delay: 12s;
-}
-#leaf8{
-  animation-delay: 14s;
-}
-#leaf9{
-  animation-delay: 16s;
-}
-#leaf10{
-  animation-delay: 18s;
-}
-/* #leaf1 {
-  background-image: url(../img/leaf-1.png);
-}
-#leaf2 {
-  background-image: url(../img/leaf-2.png);
-  animation-delay: 2s;
-}
-#leaf3 {
-  background-image: url(../img/leaf-3.png);
-  animation-delay: 4s;
-}
-#leaf4 {
-  background-image: url(../img/leaf-4.png);
-  animation-delay: 6s;
-}
-#leaf5 {
-  background-image: url(../img/leaf-5.png);
-  animation-delay: 8s;
-}
-#leaf6 {
-  background-image: url(../img/leaf-1.png);
-  animation-delay: 10s;
-}
-#leaf7 {
-  background-image: url(../img/leaf-2.png);
-  animation-delay: 12s;
-}
-#leaf8 {
-  background-image: url(../img/leaf-3.png);
-  animation-delay: 14s;
-}
-#leaf9 {
-  background-image: url(../img/leaf-4.png);
-  animation-delay: 16s;
-}
-#leaf10 {
-  background-image: url(../img/leaf-5.png);
-  animation-delay: 18s;
-} */
+
 @keyframes moveAlongPath {
-  0% { offset-distance: 0%; }
-  100% { offset-distance: 100%; }
+  0% { offset-distance: 100%; }
+  100% { offset-distance: 0%; }
 }

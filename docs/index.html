@@ -7,35 +7,38 @@
   <link rel="stylesheet" href="./css/test.css">
 </head>
 <body>
-  <svg width="2000" height="300">
-    <path id="motionPath" 
-    d="M 0,100 c 50,10 100,20 150,10 c 50,-10 100,-20 150,-10 c 50,10 100,20 150,10 c 50,-10 100,-20 150,-10 c 50,10 100,20 150,10 c 50,-10 100,-20 150,-10 c 50,10 100,20 150,10 c 50,-10 100,-20 150,-10 c 50,10 100,20 150,10 c 50,-10 100,-20 150,-10 c 50,10 100,20 150,10 c 50,-10 100,-20 150,-10"
- stroke="black" stroke-width="2" fill="none"/>
+  <header>
+    <div class="header-title">
+      <h1>Tohoku<br>Yakuriken</h1>
+    </div>
+  </header>
 
-  </svg>
-  <div class="main-visual">
-    <img src="./img/leaf-1.png" id="leaf1" class="leaf">
-    <img src="./img/leaf-2.png" id="leaf2" class="leaf">
-    <img src="./img/leaf-3.png" id="leaf3" class="leaf">
-    <img src="./img/leaf-4.png" id="leaf4" class="leaf">
-    <img src="./img/leaf-5.png" id="leaf5" class="leaf">
-    <img src="./img/leaf-1.png" id="leaf6" class="leaf">
-    <img src="./img/leaf-2.png" id="leaf7" class="leaf">
-    <img src="./img/leaf-3.png" id="leaf8" class="leaf">
-    <img src="./img/leaf-4.png" id="leaf9" class="leaf">
-    <img src="./img/leaf-5.png" id="leaf10" class="leaf">
-      <!-- <div id="leaf1" class="leaf"></div>
-      <div id="leaf2" class="leaf"></div>
-      <div id="leaf3" class="leaf"></div>
-      <div id="leaf4" class="leaf"></div>
-      <div id="leaf5" class="leaf"></div>
-      <div id="leaf6" class="leaf"></div>
-      <div id="leaf7" class="leaf"></div>
-      <div id="leaf8" class="leaf"></div>
-      <div id="leaf9" class="leaf"></div>
-      <div id="leaf10" class="leaf"></div> -->
-  </div>
+  <main>
+    <!-- アニメーション軌道 -->
+    <svg width="2000" height="300">
+      <path id="motionPath" 
+      d="M 0,100 c 200,100 400,200 600,100 c 200,-100 400,-200 600,-100 c 200,100 400,200 600,100"
+      stroke="black" stroke-width="2" fill="none"/>
+    </svg>
 
+    <div class="main-visual">
+      <img src="./img/leaf-1.png" id="leaf1" class="leaf">
+      <img src="./img/leaf-2.png" id="leaf2" class="leaf">
+      <img src="./img/leaf-3.png" id="leaf3" class="leaf">
+      <img src="./img/leaf-4.png" id="leaf4" class="leaf">
+      <img src="./img/leaf-5.png" id="leaf5" class="leaf">
+      <img src="./img/leaf-1.png" id="leaf6" class="leaf">
+      <img src="./img/leaf-2.png" id="leaf7" class="leaf">
+      <img src="./img/leaf-3.png" id="leaf8" class="leaf">
+      <img src="./img/leaf-4.png" id="leaf9" class="leaf">
+      <img src="./img/leaf-5.png" id="leaf10" class="leaf">
+      <img src="./img/leaf-1.png" id="leaf11" class="leaf">
+      <img src="./img/leaf-2.png" id="leaf12" class="leaf">
+      <img src="./img/leaf-3.png" id="leaf13" class="leaf">
+      <img src="./img/leaf-4.png" id="leaf14" class="leaf">
+      <img src="./img/leaf-5.png" id="leaf15" class="leaf">
+    </div>
+  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -43,11 +46,14 @@
 
     const leaves = [];
     let leafCount = 0;
+    let delayTime = 0;
 
     while(leaves[leafCount] !== ""){
-      leaves[leafCount] = document.querySelector(`#leaf${leafCount + 1}`);
-      leaves[leafCount].style.offsetPath = `path('${path.getAttribute('d')}')`;
+      leaves[leafCount] = document.querySelector(`#leaf${leafCount + 1}`); //idでimg要素取得
+      leaves[leafCount].style.offsetPath = `path('${path.getAttribute('d')}')`; //img要素にpath軌道を設定
+      leaves[leafCount].style.animationDelay = `${delayTime}s` //img要素ごとにanimation-delayを変化
       leafCount++;
+      delayTime++;
     }
   });
 
