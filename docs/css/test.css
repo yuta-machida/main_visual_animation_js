@@ -23,16 +23,33 @@ header {
 .main-visual{
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 300px;
   display: flex;
 }
 
 .leaf{
-  width: 96px;
   position: absolute;
-  left: -10%;
+  left: -15%;
   background-repeat: no-repeat;
   animation: moveAlongPath 15s linear infinite;
+}
+@media screen and (min-width: 1024px){
+  .main-visual{
+    top: 70%;
+  }
+  .leaf{
+    width: 96px;
+    animation: moveAlongPath 15s linear infinite;
+  }
+}
+@media screen and (max-width: 1023px){
+  .main-visual{
+    top: 40%;
+  }
+  .leaf{
+    width: 80px;
+    animation: moveAlongPath 8s linear infinite;
+  }
 }
 
 @keyframes moveAlongPath {
