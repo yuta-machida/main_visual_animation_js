@@ -33,6 +33,7 @@ header {
   background-repeat: no-repeat;
   animation: moveAlongPath 15s linear infinite;
 }
+/* デスクトップ向け */
 @media screen and (min-width: 1024px){
   .main-visual{
     top: 70%;
@@ -42,7 +43,8 @@ header {
     animation: moveAlongPath 15s linear infinite;
   }
 }
-@media screen and (max-width: 1023px){
+/* スマートフォン向け */
+@media screen and (max-width: 768px){
   .main-visual{
     top: 40%;
   }
@@ -54,5 +56,14 @@ header {
 
 @keyframes moveAlongPath {
   0% { offset-distance: 100%; }
-  100% { offset-distance: 0%; }
+
+  30%{
+    transform: rotate(180deg);
+  }
+  60%{
+    transform: rotate(-180deg);
+  }
+  100% {
+     offset-distance: 0%; 
+    }
 }
