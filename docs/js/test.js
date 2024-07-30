@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
       './img/leaf-4.png',
       './img/leaf-5.png'
     ]
+
+    let currentBreakpoint = window.matchMedia("(min-width: 768px)").matches ? 'pc' : 'sp';
     
     const applyAnimation = () =>{
       const isPC = window.matchMedia("(min-width: 768px)").matches;
       const pathId = isPC ? 'animationPath_pc' : 'animationPath_sp';
       const path = document.querySelector(`#${pathId}`);
-      const imageCount = isPC ? 15 : 7;
+      const imageCount = isPC ? 15 : 10;
       let delayTime = 0;
 
       //既存のimg要素を削除
@@ -25,13 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = imageSources[(i - 1) % imageSources.length];
         img.alt = `葉っぱ画像${(i - 1) % imageSources.length + 1}`;
         img.className = 'leaf animationPath';
+        img.id = `leaf-${(i - 1) % imageSources.length + 1}`;
+        
         
         //サイズ変更
-        if((i - 1) % 3 == 0){
-          img.style.width = '96px';
-        }else if((i- 1) % 2 == 0){
-          img.style.width = '56px';
-        }
 
         //アニメーション付与
         img.style.offsetPath = `path('${path.getAttribute('d')}')`; //img要素にpath軌道を設定
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(pathId == "animationPath_pc"){
           img.style.animationDelay = `${delayTime}s`;
         }else{
-          img.style.animationDelay = `${delayTime * 1.25}s`;
+          img.style.animationDelay = `${delayTime}s`;
         }
 
         imageContainer.appendChild(img);        
@@ -48,27 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // function debounce(func,wait){
-  //   let timeout;
-  //   return function(...args){
-  //     clearTimeout(timeout);
-  //     timeout = setTimeout(() => func.apply(this,args),wait);
-  //   };
-  // }
+  const checkBreakpoint = () =>{
+    const isPC = window.matchMedia("(min-width: 768px)").matches;
+    const newBreakpoint = isPC ? 'pc' : 'sp';
 
-  // const thresholdWidth = 1024;
-  
-  // const checkWidth = debounce(() => {
-  //   //現在の画面幅を取得
-  //   const currentWidth = window.innerWidth;
-  //   if(currentWidth == thresholdWidth){
-  //     applyAnimation();
-  //   }
-  // },200);
-  // //画面サイズが変更されたときにアニメーションを再設定
-  // window.addEventListener('resize',checkWidth);
+    if(newBreakpoint !== currentBreakpoint){
+      currentBreakpoint = newBreakpoint;
+      applyAnimation();
+    }
+  }
 
-  window.addEventListener('resize',applyAnimation);
+  window.addEventListener('resize',checkBreakpoint);
 
   //初回実行
   applyAnimation();

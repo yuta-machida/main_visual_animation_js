@@ -31,16 +31,21 @@ header {
   position: absolute;
   left: -15%;
   background-repeat: no-repeat;
-  animation: moveAlongPath 15s linear infinite;
+  animation: pcAnimation 15s linear infinite;
 }
 /* デスクトップ向け */
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 768px){
   .main-visual{
     top: 70%;
   }
   .leaf{
-    width: 96px;
-    animation: moveAlongPath 15s linear infinite;
+    animation: pcAnimation 15s linear infinite;
+  }
+  .leaf:nth-child(even){
+    width: 132px;
+  }
+  .leaf:nth-child(odd){
+    width: 80px;
   }
 }
 /* スマートフォン向け */
@@ -49,21 +54,43 @@ header {
     top: 40%;
   }
   .leaf{
-    width: 80px;
-    animation: moveAlongPath 8s linear infinite;
+    animation: pcAnimation 10s linear infinite;
+  }
+  .leaf:nth-child(even){
+    width: 72px;
+  }
+  .leaf:nth-child(odd){
+    width: 56px;
   }
 }
 
-@keyframes moveAlongPath {
-  0% { offset-distance: 100%; }
-
-  30%{
-    transform: rotate(180deg);
+@keyframes pcAnimation {
+  0% {
+    offset-distance: 100%;
   }
-  60%{
-    transform: rotate(-180deg);
+  30%{
+    transform: rotate(30deg);
+  }
+  50%{
+    transform: rotate(-60deg);
+  }
+  80%{
+    transform: rotate(50deg);
   }
   100% {
-     offset-distance: 0%; 
-    }
+    offset-distance: 0%;
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes spAnimation {
+  0% {
+    offset-distance: 100%;
+  }
+  30%{
+    transform: rotate(-30deg);
+  }
+  100% {
+    offset-distance: 0%;
+  }
 }
